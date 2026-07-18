@@ -19,7 +19,7 @@ runs:
       shell: bash
       run: |
         wget -qO- https://raw.githubusercontent.com/caffiendFrog/repo-to-go/main/checklist.md > checklist.md
-        gh repo issue create \
+        gh issue create \
           --repo "${{ inputs.repo }}" \
           --title "Portability Checklist" \
           --body-file checklist.md
