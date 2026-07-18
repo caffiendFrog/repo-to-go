@@ -1,6 +1,6 @@
 # repo-to-go 🦘 <img src="./resources/logo.png" alt="repo-to-go logo" width="120" align="right">
 
-Automating a checklist for making bioinformatics repositories portable and reproducible. 
+A checklist for making bioinformatics repositories portable and reproducible.
 
 ## Portability Checklist
 
@@ -8,6 +8,8 @@ Automating a checklist for making bioinformatics repositories portable and repro
 
 You can copy the checklist into a new issue in your repo, or view instructions
 below for using the github action to open it for you.
+
+Each checklist item links to more detailed documentation under [guide](./guide/).
 
 ## Usage
 
