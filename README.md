@@ -1,7 +1,8 @@
-# repo-to-go 🦘
-
-Guidelines and a checklist for making bioinformatics repositories portable and
-reproducible
+<h1>
+  repo-to-go 🦘
+  <img src="./resources/logo.png" alt="repo-to-go logo" width="120" align="right">
+</h1>
+Automating a checklist for making bioinformatics repositories portable and reproducible. 
 
 ## Portability Checklist
 
