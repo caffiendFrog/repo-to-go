@@ -7,6 +7,9 @@ reproducible
 
 [View the current checklist here.](./checklist.md)
 
+You can copy the checklist into a new issue in your repo, or view instructions
+below for using the github action to open it for you.
+
 ## Usage
 
 Copy the [example GitHub Actions
