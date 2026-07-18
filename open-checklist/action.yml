@@ -1,0 +1,27 @@
+name: open-checklist
+description: "Open a checklist issue in the specified repository"
+author: "Sophia Cheng, Padmashri Saravanan, Kelly Sovacool"
+
+inputs:
+  repo:
+    description: "The repository to open the issue in, with OWNER/REPO format"
+    required: true
+    default: "${{ github.repository }}"
+  github_token:
+    description: "GitHub token with permissions to create issues in the specified repository"
+    required: true
+    default: "${{ github.token }}"
+
+runs:
+  using: "composite"
+  steps:
+    - name: open checklist issue
+      shell: bash
+      run: |
+        wget -qO- https://raw.githubusercontent.com/caffiendFrog/repo-to-go/main/checklist.md > checklist.md
+        gh repo issue create \
+          --repo "${{ inputs.repo }}" \
+          --title "Portability Checklist" \
+          --body-file checklist.md
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}

@@ -1,0 +1,22 @@
+name: repo-portability-checklist
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "The repository to open the issue in, with OWNER/REPO format. Defaults to the current repo."
+        required: false
+        default: "${{ github.repository }}"
+
+permissions:
+  issues: write
+
+jobs:
+  open-checklist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open checklist issue
+        uses: caffiendFrog/repo-to-go@main
+        with:
+          repo: ${{ github.event.inputs.repo || github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
