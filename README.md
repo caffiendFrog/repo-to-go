@@ -3,12 +3,19 @@
 Guidelines and a checklist for making bioinformatics repositories portable and
 reproducible
 
+## Portability Checklist
+
+[View the current checklist here.](./checklist.md)
+
 ## Usage
 
 Copy the [example GitHub Actions
 workflow](./examples/repo-portability-checklist.yml) from this repository into
 the `.github/workflows/` directory of your repository.
 Review and adapt the contents for your own project before committing it.
+Run the action via [workflow
+dispatch](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow)
+to open an issue with the checklist.
 
 ```yaml
 name: repo-portability-checklist
