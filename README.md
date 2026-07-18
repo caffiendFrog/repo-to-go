@@ -1,52 +1,48 @@
-# repo-to-go
+# repo-to-go 🦘
 
-Reusable GitHub Actions and workflows for making bioinformatics repositories
-portable, reproducible, and ready for production use.
-
-## About
-
-This repository was created to turn lessons from the portable [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) work
-into shared automation. Rather than copying CI and release logic between
-projects, other repositories will be able to consume the actions and reusable
-workflows maintained here.
-
-Initial development took place during CoFest 2026, hosted by the Bioinformatics
-Open Source Conference (BOSC) organization.
-
-
-## Project status
-
-This repository is under development. Reusable actions and workflows will be
-documented here as they become available.
-
-## Intended scope
-
-Utilities in this repository may support:
-
-- validation of portable repositories;
-- reproducibility and dependency checks;
-- testing across supported execution environments and container runtimes;
-- release and provenance automation; and
-- consistent CI practices across bioinformatics projects.
-
-Repository-specific scientific logic and infrastructure credentials should
-remain in the repositories that consume these utilities.
+Guidelines and a checklist for making bioinformatics repositories portable and
+reproducible
 
 ## Usage
 
-Copy the desired example GitHub Actions workflow from this repository into the
-`.github/workflows/` directory of the repository you want to productionize.
-Review and adapt its configuration, permissions, and inputs for that project
-before committing it.
+Copy the [example GitHub Actions
+workflow](./examples/repo-portability-checklist.yml) from this repository into
+the `.github/workflows/` directory of your repository.
+Review and adapt the contents for your own project before committing it.
 
-Each example workflow will document its requirements and the values that
-consumers are expected to customize.
+```yaml
+name: repo-portability-checklist
 
-## Contributing
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "The repository to open the issue in, with OWNER/REPO format. Defaults to the current repo."
+        required: false
+        default: "${{ github.repository }}"
 
-Contributions should keep utilities broadly reusable, use least-privilege
-permissions, avoid assumptions about institutional paths or infrastructure,
-and include tests and consumer-facing documentation.
+permissions:
+  issues: write
+
+jobs:
+  open-checklist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open checklist issue
+        uses: caffiendFrog/repo-to-go@main
+        with:
+          repo: ${{ github.event.inputs.repo || github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## About
+
+This repository was created to share lessons learned from the work to make
+[CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) more portable across execution
+environments.
+
+Initial development took place during [CoFest 2026, hosted by the Bioinformatics
+Open Source Conference (BOSC)](https://www.open-bio.org/events/bosc-2026/collaborationfest/).
 
 ## License
 
